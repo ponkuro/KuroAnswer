@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :answers, only:[:create,:update]
+  resources :questions, only:[:index,:show,:new,:create,:edit,:update,:destroy] do
+    resources :answers, only:[:edit,:destroy]
+  end
+
   devise_for :users,
     path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {
