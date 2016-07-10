@@ -1,0 +1,55 @@
+<div class="question_area">
+    
+  <div class="question-title">
+    <h2><%= question.title %></h2>
+  </div>
+    
+  <div class="question-info">
+      
+    <div class="question-info_img_wrapper">
+      <div class="question-info_image">
+        <%= image_tag profile_image_mini_url(question.user) %>
+      </div>
+    </div>
+    
+    <div class="question-info_main">
+      <p>投稿者 : <strong><%= question.user.name %></strong></p>
+      <p>投稿日 : <%= question.created_at.strftime("%Y.%m.%d %H:%M") %></p>
+    </div>
+      
+    <% if question.user_id == current_user.id %>
+      <div class="question-edit_area">
+        <a href="<%= edit_question_url(question.id) %>" class="btn btn-question_edit">編集</a>
+        <a href="<%= question_url(question.id) %>" class="btn btn-question_edit" data-method="delete" data-confirm="質問を削除します。よろしいですか？">削除</a>
+      </div>
+    <% end %>
+      
+    <div class="clear_both"></div>
+  </div>
+    
+  <div class="question-tag_area">
+    <ul>
+      <li><a href="" class="btn-tag">Ruby</a></li>
+      <li><a href="" class="btn-tag">HTML</a></li>
+    </ul>
+    <div class="clear_both"></div>
+  </div>
+    
+  <div class="question-content">
+      <%= hbr(question.content) %>
+  </div>
+  
+  <div class="question-bottom_area">
+    <% if question.writable == false %>
+      <p>この質問への回答は締め切られました。</p>
+    <% else %>
+      <p>この質問への回答を受付中です。</p>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="answer-area" id="answers_area_<%= question.id %>">
+  <%= render partial: 'answers/form' , locals: {answer: answer} %>
+  <%= render partial: 'answers/list' , locals: {answers: answers} %>
+</div>

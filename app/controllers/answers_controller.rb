@@ -7,7 +7,8 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to question_url(@answer.question_id) }
+        @question = Question.find(@answer.question_id)
+        format.html { redirect_to question_url(@question.id) }
         format.js {render :redraw }
       else
         format.html { render :new }
@@ -29,9 +30,10 @@ class AnswersController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(@answer.question_id)
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to question_url(@answer.question_id) }
+      format.html { redirect_to question_url(@question.id) }
       format.js {render :redraw }
     end
   end

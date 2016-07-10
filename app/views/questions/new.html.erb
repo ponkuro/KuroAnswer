@@ -1,2 +1,8 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-default">
+    <h2>質問の新規投稿</h2>
+    <%= render partial: 'questions/form' , locals: {question: @question} %>
+  </div>
+</div>
+<%= render "shared/footer" %>

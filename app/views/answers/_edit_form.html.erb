@@ -1,0 +1,16 @@
+<div class="answer-form">
+  <%= form_for(answer) do |f| %>
+    <div class="answer-form_img">
+      <%= image_tag profile_image_mini_url(current_user) %>
+    </div>
+    <div class="answer-form_field">
+      <%= f.text_field :content, placeholder: "回答" %>
+      <%= f.hidden_field :question_id %>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    <div class="answer-form_action">
+      <%= f.submit "Enter", class: "btn btn-answer" %>
+    </div>
+  <% end %>
+  <div class="clear_both"></div>
+</div>

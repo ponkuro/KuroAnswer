@@ -1,2 +1,7 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-question">
+    <%= render partial: 'questions/topic' , locals: {question: @question, answers: @answers, answer: @answer} %>
+  </div>
+</div>
+<%= render "shared/footer" %>

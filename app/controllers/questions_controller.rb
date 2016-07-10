@@ -14,12 +14,9 @@ class QuestionsController < ApplicationController
   end
   
   def show
-    @answers = @question.answers
+    @answers = @question.answers.order(created_at: :desc).page(params[:page])
     @answer = @question.answers.build
-    @recent_questions = Question.where(category: @question.category).order(created_at: :desc).limit(10)
-    if @recent_questions.empty?
-      @recent_questions = Question.order(created_at: :desc).limit(10)
-    end
+    @recent_questions = Question.order(created_at: :desc).limit(10)
   end
   
   def new
@@ -31,7 +28,7 @@ class QuestionsController < ApplicationController
     correct_user_question
     respond_to do |format|
       if @question.save
-        format.html { redirect_to user_url(@question.user_id) }
+        format.html { redirect_to question_url(@question.id) }
       else
         format.html { render :new }
       end
@@ -44,7 +41,7 @@ class QuestionsController < ApplicationController
   def update
     respond_to do |format|
       if @question.update(question_params)
-        format.html { redirect_to user_url(@question.user_id) }
+        format.html { redirect_to question_url(@question.id) }
       else
         format.html { render :edit }
       end
@@ -54,7 +51,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to user_url(@question.user_id) }
+      format.html { redirect_to questions_url }
     end
   end
   

@@ -1,2 +1,13 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-question">
+  <div class="question-index_main">
+    <%= render partial: 'questions/list' , locals: {questions: @questions} %>
+  </div>
+  <div class="question-index_side">
+    <%= render partial: 'questions/list_pv' , locals: {questions: @questions} %>
+    <%= render partial: 'questions/list_tag' %>
+  </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

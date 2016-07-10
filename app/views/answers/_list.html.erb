@@ -1,0 +1,41 @@
+<div class="answer-list">
+  <div class="answer-header">
+    <h2>回答</h2>
+  </div>
+  <% if answers.count==0 %>
+    <div class="answer-empty">
+      <p>この質問に対する回答はまだありません。</p>
+    </div>
+  <% end %>
+  <ul>
+  <% answers.each do |answer| %>
+    <% unless answer.id.nil? %>
+      <li>
+        <div class="answer-msgbox">
+          <div class="answer-msg_img">
+            <%= image_tag profile_image_mini_url(answer.user) %>
+          </div>
+          <div class="answer-msg_content">
+            <div class="answer-msg_info">
+              <%= answer.user.name %> - <%= answer.created_at.strftime("%Y.%m.%d %H:%M") %>
+              <% if answer.user_id == current_user.id %>
+                <div class="answer-msg_edit">
+                  <%= link_to '編集', edit_question_answer_url(answer.question_id,answer) %>
+                  <%= link_to '削除', question_answer_url(answer.question_id,answer), method: :delete, remote: true, data: { confirm: '回答を削除します。よろしいですか？' } %>
+                </div>
+              <% end %>
+            </div>
+            <div class="answer-msg_text">
+              <%= hbr(answer.content) %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+  <%= paginate answers, window: 2 %>
+  <div class="answer-footer">
+    <br />
+  </div>
+</div>

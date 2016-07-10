@@ -9,12 +9,24 @@
     </div>
     <div class="navbar-main">
     <% if user_signed_in? %>
+      <div class="navbar-new_question">
+        <a href="<%= new_question_url %>" class="btn-new_question">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <span>質問する</span>
+        </a>
+      </div>
       <div class="navbar-middle">
         <ul>
           <li>
             <a href="<%= user_url(current_user.id) %>">
-              <i class="fa fa-home" aria-hidden="true"></i>
-              <span>ホーム</span>
+              <i class="fa fa-file-text" aria-hidden="true"></i>
+              <span>投稿した質問</span>
+            </a>
+          </li>
+          <li>
+            <a href="<%= edit_user_registration_url %>">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>アカウント設定</span>
             </a>
           </li>
         </ul>

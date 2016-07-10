@@ -1,0 +1,26 @@
+<div class="question-sidelist">
+  <div class="question-sl_frame">
+    <div class="question-sl_header">
+      <h3>閲覧数ランキング</h3>
+    </div>
+    <div class="question-sl_content">
+      <% if questions.count==0 %>
+        <div class="question-empty">
+          <p>条件に一致する質問の投稿はありません。</p>
+        </div>
+      <% end %>
+      <ul>
+        <% questions.each do |f| %>
+          <li>
+            <div class="question-sl_itembox">
+              <a href="<%= question_url(f.id) %>" ><%= f.title %></a>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="question-sl_bottom">
+      <a>もっと見る</a>
+    </div>
+  </div>
+</div>
