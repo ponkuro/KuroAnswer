@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+  resources :tagnotes, only:[:create,:destroy]
+  resources :tags, only:[:index,:create,:destroy]
+  
   resources :answers, only:[:create,:update]
   resources :questions, only:[:index,:show,:new,:create,:edit,:update,:destroy] do
     resources :answers, only:[:edit,:destroy]
+    member do
+      patch "tags/editstart", "tags/editend"
+    end
   end
 
   devise_for :users,

@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
   
   def edit
   end
-  
+
   def update
     respond_to do |format|
       if @question.update(question_params)

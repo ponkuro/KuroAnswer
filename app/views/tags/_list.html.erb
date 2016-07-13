@@ -1,0 +1,15 @@
+<ul>
+  <% notes = question.tagnotes.order(created_at: :asc) %>
+  <% notes.each do |tagnote| %>
+    <% unless tagnote.id.nil? %>
+      <li>
+        <a href="" class="btn-tag"><%= tagnote.tag.name %></a>
+      </li>
+    <% end %>
+  <% end %>
+  <% if question.tags.count==0 %>
+    <li>
+      <p>タグ情報はありません。</p>
+    </li>
+  <% end %>
+</ul>

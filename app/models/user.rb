@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: [:facebook, :twitter]
   mount_uploader :image, ImageUploader
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
   
   ######################################
   ##  ユーザー認証に関連したメソッド  ##

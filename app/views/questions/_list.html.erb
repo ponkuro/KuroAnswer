@@ -23,10 +23,7 @@
               </div>
               <p>質問者：<%= f.user.name %> - <%= f.created_at.strftime("%Y.%m.%d %H:%M") %></p>
               <div class="question-ml_tag">
-                <ul>
-                  <li><a href="" class="btn-tag">Ruby</a></li>
-                  <li><a href="" class="btn-tag">HTML</a></li>
-                </ul>
+                <%= render partial: 'tags/list' , locals: {question: f} %>
                 <div class="clear_both"></div>
               </div>
             </div>

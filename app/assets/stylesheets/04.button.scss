@@ -109,3 +109,59 @@
         }
     }
 }
+
+/*タグボタン*/
+.btn-tag {
+    border-radius: 2px;
+    border: solid 1px #aaaaaa;
+    background-color: #dbebc4;
+    color: #005c42;
+    font-size: 0.8em;
+    margin: 0 5px;
+    padding: 3px 8px;
+}
+
+.btn-tag_delete {
+    border-radius: 2px;
+    border: solid 1px #aaaaaa;
+    background-color: #dbebc4;
+    color: #005c42;
+    font-size: 0.8em;
+    margin: 0 5px;
+    padding: 3px 12px 3px 8px;
+}
+
+.btn-tag_delete:hover {
+    background-color: rgba(61,82,29,0.8);
+}
+
+.i_tag_del {
+    font-size: 1.4em;
+    color: #333333;
+    margin: 0 0 0 -18px;
+    padding: 0;
+}
+
+.btn-tag_edit {
+    border-radius: 2px;
+    border: solid 1px #418b89;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    background-color: #2cb4ad;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 4px 8px;
+}
+
+.btn-tag_edit2 {
+    border-radius: 2px;
+    border: solid 1px #c82c55;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    background-color: #e73562;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin: 0 5px;
+    padding: 4px 8px;
+}

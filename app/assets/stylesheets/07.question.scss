@@ -90,18 +90,23 @@
 }
 
 .question-ml_tag {
-    font-size: 0.8em;
     border-top: 2px dashed #cccccc;
     margin:  0 2.5%;
     padding: 10px 0 5px 0;
     ul {
         list-style: none;
+        display: inline;
         margin: 0;
         padding: 0;
         li {
             display: inline;
             margin: 0;
             padding: 0;
+            p {
+                display: inline;
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 }
@@ -250,28 +255,48 @@
 }
 
 .question-tag_area {
-    font-size: 0.8em;
     margin:  0 2.5%;
-    padding: 10px 0 5px 0;
+    padding: 10px 100px 5px 0;
     ul {
         list-style: none;
+        display: inline;
         margin: 0;
         padding: 0;
         li {
             display: inline;
             margin: 0;
             padding: 0;
+            p {
+                display: inline;
+                margin: 0;
+                padding: 0;
+            }
         }
     }
 }
 
-.btn-tag {
-    border-radius: 2px;
+.edit_tagnote {
+    display: inline;
+}
+
+.question-tag_edit {
+    float: right;
+    margin: -3px -100px 0 0;
+    padding: 0;
+}
+
+.question-new_tag_form {
+    margin: 15px 0 5px 0;
+    padding: 0;
+}
+
+.tag-input_field {
+    width: 80%;
+    max-width: 200px;
     border: solid 1px #aaaaaa;
-    background-color: #dbebc4;
-    color: #005c42;
-    margin: 0 5px;
-    padding: 3px 8px;
+    border-radius: 4px;
+    margin: 0;
+    padding: 5px;
 }
 
 .question-content {

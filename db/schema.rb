@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703110432) do
+ActiveRecord::Schema.define(version: 20160710055329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,23 @@ ActiveRecord::Schema.define(version: 20160703110432) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
+
+  create_table "tagnotes", force: :cascade do |t|
+    t.integer  "question_id", null: false
+    t.integer  "tag_id",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "tagnotes", ["question_id", "tag_id"], name: "index_tagnotes_on_question_id_and_tag_id", unique: true, using: :btree
+  add_index "tagnotes", ["question_id"], name: "index_tagnotes_on_question_id", using: :btree
+  add_index "tagnotes", ["tag_id"], name: "index_tagnotes_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
