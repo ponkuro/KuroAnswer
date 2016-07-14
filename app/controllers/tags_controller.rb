@@ -4,6 +4,17 @@ class TagsController < ApplicationController
   def index
     @tags = Tag.order(created_at: :desc).page(params[:page])
   end
+  
+  def show
+    @tag = Tag.find(params[:id])
+    @questions = @tag.questions.order(created_at: :desc).page(params[:page])
+    @answers = []
+    @answer = []
+    @questions.each do |question|
+      @answers[question.id] = question.answers
+      @answer[question.id] = question.answers.build
+    end
+  end
 
   def create
     @tag = Tag.new(tag_params)

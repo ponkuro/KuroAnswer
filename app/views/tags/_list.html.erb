@@ -3,7 +3,7 @@
   <% notes.each do |tagnote| %>
     <% unless tagnote.id.nil? %>
       <li>
-        <a href="" class="btn-tag"><%= tagnote.tag.name %></a>
+        <a href="<%= tag_url(tagnote.tag.id) %>" class="btn-tag"><%= tagnote.tag.name %></a>
       </li>
     <% end %>
   <% end %>

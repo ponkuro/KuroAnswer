@@ -1,7 +1,7 @@
 <%= render "shared/navibar" %>
 <div class="container-main">
   <div class="container-question">
-    <h1>トップページ（新着）</h1>
+    <h1>「<%= @tag.name %>」に関連する質問</h1>
     <div class="question-index_main">
       <%= render partial: 'questions/list' , locals: {questions: @questions} %>
     </div>

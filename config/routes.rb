@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :tagnotes, only:[:create,:destroy]
-  resources :tags, only:[:index,:create,:destroy]
+  resources :tags, only:[:index,:show,:create,:destroy]
   
   resources :answers, only:[:create,:update]
   resources :questions, only:[:index,:show,:new,:create,:edit,:update,:destroy] do
