@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tags = Tag.order(created_at: :desc).page(params[:page])
+    @tags = Tag.order(frequency: :desc, updated_at: :desc).page(params[:page])
   end
   
   def show

@@ -1,7 +1,14 @@
-<ul>
-  <% @tags.each do |tag| %>
-      <li>
-        <%= tag.name %> - <%= tag.created_at.strftime("%Y.%m.%d %H:%M") %>
-      </li>
-  <% end %>
-</ul>
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-question">
+    <h1>登録されているタグ（人気順）</h1>
+    <div class="question-index_main">
+      <%= render partial: 'tags/list_frequency' , locals: {tags: @tags} %>
+    </div>
+    <div class="question-index_side">
+      <%= render partial: 'questions/list_pv' %>
+      <%= render partial: 'questions/list_tag' %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

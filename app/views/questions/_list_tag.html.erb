@@ -3,37 +3,25 @@
     <div class="question-sl_header">
       <h3>人気のタグ</h3>
     </div>
+    <% tags = Tag.order(frequency: :desc, updated_at: :desc).limit(5) %>
     <div class="question-sl_content">
+      <% if tags.count==0 %>
+        <div class="question-empty">
+          <p>条件に一致する質問の投稿はありません。</p>
+        </div>
+      <% end %>
       <ul>
-        <li>
-          <div class="question-sl_itembox">
-            <a href="<%= questions_url + '?tag=2' %>">Ruby on Rails</a>
-          </div>
-        </li>
-        <li>
-          <div class="question-sl_itembox">
-            <a href="<%= questions_url + '?tag=3' %>">Ruby Gems</a>
-          </div>
-        </li>
-        <li>
-          <div class="question-sl_itembox">
-            <a href="<%= questions_url + '?tag=4' %>">HTML/CSS</a>
-          </div>
-        </li>
-        <li>
-          <div class="question-sl_itembox">
-            <a href="<%= questions_url + '?tag=5' %>">Javascript</a>
-          </div>
-        </li>
-        <li>
-          <div class="question-sl_itembox">
-            <a href="<%= questions_url + '?tag=6' %>">DataBase/SQL</a>
-          </div>
-        </li>
+        <% tags.each do |f| %>
+          <li>
+            <div class="question-sl_itembox">
+              <a href="<%= tag_url(f.id) %>" ><%= f.name %></a>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="question-sl_bottom">
-      <a>もっと見る</a>
+      <a href="<%= tags_url %>">もっと見る</a>
     </div>
   </div>
 </div>

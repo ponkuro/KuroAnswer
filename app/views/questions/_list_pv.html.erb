@@ -3,6 +3,7 @@
     <div class="question-sl_header">
       <h3>閲覧数ランキング</h3>
     </div>
+    <% questions = Question.order(created_at: :desc).limit(5) %>
     <div class="question-sl_content">
       <% if questions.count==0 %>
         <div class="question-empty">

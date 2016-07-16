@@ -1,0 +1,16 @@
+<div class="question-mainlist">
+  <div class="question-ml_frame">
+    <div class="question-ml_header">
+      <h2>タグ一覧</h2>
+    </div>
+    <div class="question-ml_tagfreq">
+      <ul>
+        <% @tags.each do |tag| %>
+          <li>
+            <a href="<%= tag_url(tag.id) %>"><%= tag.name %> (<%= tag.questions.count %>)</a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

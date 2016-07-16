@@ -133,6 +133,17 @@
     font-weight: bold;
 }
 
+.question-ml_tagfreq {
+    margin: 0;
+    padding: 15px 0 20px 0;
+    ul {
+        li {
+            display: inline;
+            margin-right: 20px;
+        }
+    }
+}
+
 
 /*サイドメニュー*/
 .question-sidelist {
