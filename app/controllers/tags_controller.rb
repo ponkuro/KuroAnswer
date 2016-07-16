@@ -16,6 +16,26 @@ class TagsController < ApplicationController
     end
   end
 
+  def search
+    @tag = Tag.find_by(name: params[:tag_name])
+    unless @tag
+      respond_to do |format|
+        format.html { redirect_to tags_url, notice: 'お探しのタグは見つかりませんでした。' }
+      end
+    else
+      @questions = @tag.questions.order(created_at: :desc).page(params[:page])
+      @answers = []
+      @answer = []
+      @questions.each do |question|
+        @answers[question.id] = question.answers
+        @answer[question.id] = question.answers.build
+      end
+      respond_to do |format|
+        format.html { render :show }
+      end
+    end
+  end
+  
   def create
     @tag = Tag.new(tag_params)
     respond_to do |format|

@@ -1,15 +1,12 @@
 <%= render "shared/navibar" %>
 <div class="container-main">
   <div class="container-question">
-    <% if flash.present? %>
-      <%= render "shared/notice" %>
-    <% end %>
-    <h1>登録されているタグ（人気順）</h1>
+    <h1>「<%= @tag.name %>」に関連する質問</h1>
     <div class="question-index_main">
-      <%= render partial: 'tags/list_frequency' , locals: {tags: @tags} %>
+      <%= render partial: 'questions/list' , locals: {questions: @questions} %>
     </div>
     <div class="question-index_side">
-      <%= render partial: 'questions/list_pv' %>
+      <%= render partial: 'questions/list_pv' , locals: {questions: @questions} %>
       <%= render partial: 'questions/list_tag' %>
     </div>
   </div>

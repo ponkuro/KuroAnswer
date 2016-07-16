@@ -15,6 +15,12 @@
           <span>質問する</span>
         </a>
       </div>
+      <div class="navbar-search">
+        <%= form_tag(tags_search_url) do %>
+          <input type="text" name="tag_name" placeholder="タグ名を入力" class="tag-input_field" />
+          <input type="submit" name="commit" value="検索" class="btn" />
+        <% end %>
+      </div>
       <div class="navbar-middle">
         <ul>
           <li>
