@@ -335,11 +335,18 @@
     background-color: #f7f6fb;
     border-top: 1px solid #cccccc;
     text-align: center;
-    margin: 0;
-    padding: 10px;
+    margin:  0;
+    padding: 10px 100px 10px 0;
     p {
+        display: inline;
         color: #666666;
         margin: 0;
         padding: 0;
     }
+}
+
+.question-writable {
+    float: right;
+    margin: -3px -100px 0 0;
+    padding: 0 2.5% 0 0;
 }

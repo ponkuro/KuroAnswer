@@ -44,12 +44,8 @@
       <%= hbr(question.content) %>
   </div>
   
-  <div class="question-bottom_area">
-    <% if question.writable == false %>
-      <p>この質問への回答は締め切られました。</p>
-    <% else %>
-      <p>この質問への回答を受付中です。</p>
-    <% end %>
+  <div class="question-bottom_area" id="bottom_area">
+    <%= render partial: 'questions/writable' , locals: {question: question} %>
   </div>
 
 </div>

@@ -1,5 +1,8 @@
-<div class="answer-edit_container">
-  <h2>回答の編集</h2>
-  <%= render partial: 'answers/edit_form' , locals: {answer: @answer} %>
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-default">
+    <h2>回答の編集</h2>
+    <%= render partial: 'answers/edit_form' , locals: {answer: @answer} %>
+  </div>
 </div>
 <%= render "shared/footer" %>

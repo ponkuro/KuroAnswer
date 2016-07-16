@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user_question, only: [:edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :ansclose, :ansopen]
+  before_action :correct_user_question, only: [:edit, :update, :destroy, :ansclose, :ansopen]
   
   def index
     @questions = Question.order(created_at: :desc).page(params[:page])
@@ -52,6 +52,24 @@ class QuestionsController < ApplicationController
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url }
+    end
+  end
+
+  def ansclose
+    @question.writable = false
+    @question.save
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js {render :redraw }
+    end
+  end
+
+  def ansopen
+    @question.writable = true
+    @question.save
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js {render :redraw }
     end
   end
   

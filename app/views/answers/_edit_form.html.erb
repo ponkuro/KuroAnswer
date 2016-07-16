@@ -1,16 +1,14 @@
-<div class="answer-form">
+<div class="form_frame max-wid750">
   <%= form_for(answer) do |f| %>
-    <div class="answer-form_img">
-      <%= image_tag profile_image_mini_url(current_user) %>
-    </div>
-    <div class="answer-form_field">
-      <%= f.text_field :content, placeholder: "回答" %>
-      <%= f.hidden_field :question_id %>
-      <%= f.hidden_field :user_id, :value => current_user.id %>
-    </div>
-    <div class="answer-form_action">
-      <%= f.submit "Enter", class: "btn btn-answer" %>
-    </div>
+    
+    <h3>編集内容を記入</h3>
+    <ul>
+      <li>
+        <%= f.text_area :content, placeholder: "回答を入力する", rows: 15, class: "input_field" %>
+        <%= f.hidden_field :question_id %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </li>
+    </ul>
+    <%= f.submit "更新する", class: "btn-form_submit" %>
   <% end %>
-  <div class="clear_both"></div>
 </div>

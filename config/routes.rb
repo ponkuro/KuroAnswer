@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :questions, only:[:index,:show,:new,:create,:edit,:update,:destroy] do
     resources :answers, only:[:edit,:destroy]
     member do
-      patch "tags/editstart", "tags/editend"
+      patch "tags/editstart", "tags/editend","ansclose","ansopen"
     end
   end
 

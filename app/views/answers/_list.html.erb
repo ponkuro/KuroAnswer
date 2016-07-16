@@ -21,7 +21,7 @@
               <% if answer.user_id == current_user.id %>
                 <div class="answer-msg_edit">
                   <%= link_to '編集', edit_question_answer_url(answer.question_id,answer) %>
-                  <%= link_to '削除', question_answer_url(answer.question_id,answer), method: :delete, remote: true, data: { confirm: '回答を削除します。よろしいですか？' } %>
+                  <%= link_to '削除', question_answer_url(answer.question_id,answer), method: :delete, remote: true, data: { confirm: 'この回答を削除します。よろしいですか？' } %>
                 </div>
               <% end %>
             </div>
