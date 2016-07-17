@@ -1,0 +1,14 @@
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-question">
+    <h1>トップページ（新着）</h1>
+    <div class="question-index_main">
+      <%= render partial: 'questions/list' , locals: {questions: @questions} %>
+    </div>
+    <div class="question-index_side">
+      <%= render partial: 'questions/list_pv' %>
+      <%= render partial: 'questions/list_tag' %>
+    </div>
+  </div>
+</div>
+<%= render "shared/footer" %>

@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  resources :pvcounts, only:[:index]
+  resources :tagnotes, only:[:create,:destroy]
+  post "tags/search"
+  resources :tags, only:[:index,:show,:create,:destroy]
+  
+  resources :answers, only:[:create,:update]
+  resources :questions, only:[:index,:show,:new,:create,:edit,:update,:destroy] do
+    resources :answers, only:[:edit,:destroy]
+    member do
+      patch "tags/editstart", "tags/editend","ansclose","ansopen"
+    end
+  end
+
   devise_for :users,
     path_names: {sign_in: "login", sign_out: "logout"},
     controllers: {

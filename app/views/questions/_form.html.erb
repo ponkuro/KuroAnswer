@@ -1,0 +1,24 @@
+<div class="form_frame max-wid750">
+  <%= form_for(question) do |f| %>
+    
+    <h3>それぞれの項目を記入</h3>
+    <ul>
+      <li>
+        <div class="form_label">
+          <span class="mark-red">必須</span>
+          <%= f.label :title, "タイトル" %>
+        </div>
+        <%= f.text_field :title, placeholder: "タイトル", class: "input_field" %>
+      </li>
+      <li>
+        <div class="form_label">
+          <span class="mark-red">必須</span>
+          <%= f.label :content, "質問の内容" %>
+        </div>
+        <%= f.text_area :content, placeholder: "質問したいことを書く", rows: 15, class: "input_field" %>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </li>
+    </ul>
+    <%= f.submit "投稿する", class: "btn-form_submit" %>
+  <% end %>
+</div>

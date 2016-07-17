@@ -1,0 +1,10 @@
+<%= render partial: 'tags/list' , locals: {question: question} %>
+<% if question.user_id == current_user.id %>
+  <div class="question-tag_edit">
+    <%= form_for(question, url: tags_editstart_question_url(question.id), remote: true) do |f| %>
+      <%= f.hidden_field :id %>
+      <%= f.submit "タグを編集", class: "btn-tag_edit" %>
+    <% end %>
+  </div>
+<% end %>
+<div class="clear_both"></div>

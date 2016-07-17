@@ -79,6 +79,40 @@ nav.navibar {
     padding: 0;
 }
 
+.navbar-new_question {
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 20px 0 0;
+    padding: 9px 0 0 0;
+    a {
+        font-size: 1.2em !important;
+    }
+}
+
+.btn-new_question {
+    height: 32px !important;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    background: -webkit-linear-gradient(#ffa443, #ff7400);
+    background: -moz-linear-gradient(#ffa443, #ff7400);
+    background: -o-linear-gradient(#ffa443, #ff7400);
+    background: -ms-linear-gradient(#ffa443, #ff7400);
+    background: linear-gradient(#ffa443, #ff7400);
+    padding: 4px 15px;
+}
+
+.btn-new_question:hover {
+    background: rgba(255,164,57,0.9);
+    color: white !important;
+}
+
+.navbar-search {
+    float: left;
+    margin: 0 25px 0 0;
+    padding: 8px 0 0 0;
+}
+
 .navbar-middle {
     float: left;
     margin: 0;

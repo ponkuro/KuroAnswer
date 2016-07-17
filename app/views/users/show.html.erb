@@ -1,16 +1,14 @@
 <%= render "shared/navibar" %>
 <div class="container-main">
-  <div class="container-default">
-  
-    <%= render "shared/notice" %>
-    
-    <div class="btn btn_setting">
-      <a href="<%= edit_user_registration_url %>">
-        <i class="fa fa-cog" aria-hidden="true"></i>
-        <span>アカウント設定</span>
-      </a>
+  <div class="container-question">
+    <h1><%= @user.name %>さんの投稿した質問</h1>
+    <div class="question-index_main">
+      <%= render partial: 'questions/list' , locals: {questions: @questions} %>
     </div>
-    
+    <div class="question-index_side">
+      <%= render partial: 'questions/list_pv' , locals: {questions: @questions} %>
+      <%= render partial: 'questions/list_tag' %>
+    </div>
   </div>
 </div>
 <%= render "shared/footer" %>
