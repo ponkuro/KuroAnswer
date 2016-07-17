@@ -1,6 +1,9 @@
 <%= render "shared/navibar" %>
 <div class="container-main">
   <div class="container-question">
+    <% if flash.present? %>
+      <%= render "shared/notice" %>
+    <% end %>
     <h1>24時間ランキング（アクセス数順）</h1>
     <div class="question-index_main">
       <%= render partial: 'pvcounts/list' , locals: {pvcounts: @pvcounts} %>
