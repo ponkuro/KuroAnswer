@@ -1,27 +1,29 @@
 <div class="question-sidelist">
   <div class="question-sl_frame">
     <div class="question-sl_header">
-      <h3>閲覧数ランキング</h3>
+      <h3>PVランキング(24時間)</h3>
     </div>
-    <% questions = Question.order(created_at: :desc).limit(5) %>
+    <% Pvcount.update_timescope %>
+    <% timescope = Time.now.strftime("%Y%m%d%H").to_i %>
+    <% pvcounts = Pvcount.where(timescope: timescope).order(pv_24hr: :desc).limit(5) %>
     <div class="question-sl_content">
-      <% if questions.count==0 %>
+      <% if pvcounts.count==0 %>
         <div class="question-empty">
           <p>条件に一致する質問の投稿はありません。</p>
         </div>
       <% end %>
       <ul>
-        <% questions.each do |f| %>
+        <% pvcounts.each do |f| %>
           <li>
             <div class="question-sl_itembox">
-              <a href="<%= question_url(f.id) %>" ><%= f.title %></a>
+              <a href="<%= question_url(f.question.id) %>" ><%= f.question.title %></a>
             </div>
           </li>
         <% end %>
       </ul>
     </div>
     <div class="question-sl_bottom">
-      <a>もっと見る</a>
+      <a href="<%= pvcounts_url %>">もっと見る</a>
     </div>
   </div>
 </div>

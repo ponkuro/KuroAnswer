@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
   def show
     @answers = @question.answers.order(created_at: :desc).page(params[:page])
     @answer = @question.answers.build
-    @recent_questions = Question.order(created_at: :desc).limit(10)
+    @question.countup!(Time.now)
   end
   
   def new

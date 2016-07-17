@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :tagnotes, dependent: :destroy
   has_many :tags, through: :tagnotes
+  has_many :pvcounts, dependent: :destroy
   
   ######################################
   ##  タグ機能に関連したメソッド  ##
@@ -28,4 +29,21 @@ class Question < ActiveRecord::Base
     tag.frequency = tag.questions.count
     tag.save
   end
+
+
+  ################################################
+  ##  アクセスカウンター機能に関連したメソッド  ##
+  ################################################
+    
+  # カウントする
+  def countup!(target_time)
+    i_timescope = target_time.strftime("%Y%m%d%H").to_i
+    pvcount = Pvcount.set_counter(self.id, i_timescope)
+    
+    # カウンター情報を更新
+    pvcount.pv = pvcount.pv + 1
+    pvcount.pv_24hr = pvcount.pv_24hr + 1
+    pvcount.save
+  end
+  
 end

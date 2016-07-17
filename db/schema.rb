@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714222655) do
+ActiveRecord::Schema.define(version: 20160716165616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20160714222655) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
+
+  create_table "pvcounts", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "timescope",               null: false
+    t.integer  "pv",          default: 0, null: false
+    t.integer  "pv_24hr",     default: 0, null: false
+    t.integer  "pv_prev23",   default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "pvcounts", ["question_id", "timescope"], name: "index_pvcounts_on_question_id_and_timescope", unique: true, using: :btree
+  add_index "pvcounts", ["question_id"], name: "index_pvcounts_on_question_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "title",                     null: false
@@ -86,5 +99,6 @@ ActiveRecord::Schema.define(version: 20160714222655) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "users"
+  add_foreign_key "pvcounts", "questions"
   add_foreign_key "questions", "users"
 end

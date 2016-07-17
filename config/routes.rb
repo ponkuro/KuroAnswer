@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pvcounts, only:[:index]
   resources :tagnotes, only:[:create,:destroy]
   post "tags/search"
   resources :tags, only:[:index,:show,:create,:destroy]
