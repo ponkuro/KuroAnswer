@@ -7,6 +7,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @questions = @user.questions.order(created_at: :desc).page(params[:page])
+    @answers = []
+    @answer = []
+    @questions.each do |question|
+      @answers[question.id] = question.answers
+      @answer[question.id] = question.answers.build
+    end
   end
 
   private

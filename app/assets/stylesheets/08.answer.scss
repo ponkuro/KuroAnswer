@@ -1,0 +1,149 @@
+/*回答エリア*/
+.answer-area {
+    min-height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*回答フォーム*/
+.answer-form {
+    width: 100%;
+    height: 160px;
+    border-radius: 0 0 6px 6px;
+    border-top: 2px solid #999999;
+    background-color: #b4aeb1;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    margin: 0 auto 40px auto;
+    padding: 5px 10px;
+}
+
+.answer-form_closed {
+    width: 100%;
+    height: 15px;
+    border-radius: 0 0 6px 6px;
+    border-top: 2px solid #999999;
+    background-color: #b4aeb1;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    margin: 0 auto 40px auto;
+    padding: 5px 10px;
+}
+
+.answer-form_img {
+    float: left;
+    width: 50px;
+    margin: 0 -50px 0 0;
+    padding: 0;
+    img {
+        border-radius: 2px;
+    }
+}
+
+.answer-form_field {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 3px 70px 0 50px;
+    textarea {
+        width: 100%;
+        border: solid 1px #999999;
+        border-radius: 4px;
+        margin: 0;
+        padding: 10px;
+    }
+}
+
+.answer-form_action {
+    float: right;
+    width: 70px;
+    text-align: right;
+    margin: 0 0 0 -80px;
+    padding: 5px 0;
+}
+
+.btn-answer {
+    width: 60px;
+    height: 30px;
+    margin-right: 2px;
+    background: -webkit-linear-gradient(#fffff9, #cccccc);
+    background: -moz-linear-gradient(#fffff9, #cccccc);
+    background: -o-linear-gradient(#fffff9, #cccccc);
+    background: -ms-linear-gradient(#fffff9, #cccccc);
+    background: linear-gradient(#fffff9, #cccccc);
+}
+
+
+/*Answer一覧*/
+.answer-list {
+    border-radius: 6px;
+    background-color: #fafdff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    margin: 0;
+    padding: 0;
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+            margin: 0;
+        }
+    }
+}
+
+.answer-header {
+    border-radius: 6px 6px 0 0;
+    background-color: #bbdbf3;
+    border-bottom: 1px solid #cccccc;
+    margin: 0;
+    padding: 10px;
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.answer-empty {
+    padding: 10px 20px;
+}
+
+.answer-msgbox {
+    min-height: 60px;
+    border-radius: 6px;
+    background-color: #f7f6fb;
+    margin: 20px 15px 20px 15px;
+    padding: 10px;
+}
+
+.answer-msg_img {
+    float: left;
+}
+
+.answer-msg_content {
+    margin: 0;
+    padding: 0 0 0 50px;
+}
+
+.answer-msg_info {
+    border-bottom: 2px dashed #cccccc;
+    margin: 0 0 5px 0;
+    padding: 4px 0 8px 0;
+}
+
+.answer-msg_edit {
+    display: inline;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.answer-msg_text {
+    margin: 10px 0;
+    padding: 0 1% ;
+}
+
+.answer-footer {
+    border-radius: 0 0 6px 6px;
+    background-color: #f7f6fb;
+    border-top: 1px solid #cccccc;
+    margin: 0;
+    padding: 10px;
+}

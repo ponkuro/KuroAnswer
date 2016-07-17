@@ -1,0 +1,21 @@
+<% if question.writable == false %>
+  <p>この質問への回答は締め切られました。</p>
+  <% if question.user_id == current_user.id %>
+    <div class="question-writable">
+      <%= form_for(question, url: ansopen_question_url(question.id), remote: true) do |f| %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "締切を解除", class: "btn-tag_edit" %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <p>この質問への回答を受付中です。</p>
+  <% if question.user_id == current_user.id %>
+    <div class="question-writable">
+      <%= form_for(question, url: ansclose_question_url(question.id), remote: true) do |f| %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "締切にする", class: "btn-tag_edit" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

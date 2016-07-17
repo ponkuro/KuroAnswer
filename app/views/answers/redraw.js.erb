@@ -1,0 +1,2 @@
+$('#answers_area_<%= @question.id %>').html('<%= escape_javascript(render partial: 'answers/form' , locals: {answer: @question.answers.build}) %><%= escape_javascript(render partial: 'answers/list' , locals: {answers: @question.answers.order(created_at: :desc).page(params[:page])}) %>');
+$(':text').val('')

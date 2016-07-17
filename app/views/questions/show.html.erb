@@ -1,0 +1,7 @@
+<%= render "shared/navibar" %>
+<div class="container-main">
+  <div class="container-question">
+    <%= render partial: 'questions/topic' , locals: {question: @question, answers: @answers, answer: @answer} %>
+  </div>
+</div>
+<%= render "shared/footer" %>

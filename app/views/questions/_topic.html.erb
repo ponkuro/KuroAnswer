@@ -1,0 +1,56 @@
+<div class="question_area">
+    
+  <div class="question-title">
+    <h2><%= question.title %></h2>
+  </div>
+    
+  <div class="question-info">
+      
+    <div class="question-info_img_wrapper">
+      <div class="question-info_image">
+        <%= image_tag profile_image_mini_url(question.user) %>
+      </div>
+    </div>
+    
+    <div class="question-info_main">
+      <p>投稿者 : <strong><%= question.user.name %></strong></p>
+      <p>投稿日 : <%= question.created_at.strftime("%Y.%m.%d %H:%M") %></p>
+    </div>
+      
+    <% if question.user_id == current_user.id %>
+      <div class="question-edit_area">
+        <a href="<%= edit_question_url(question.id) %>" class="btn btn-question_edit">編集</a>
+        <a href="<%= question_url(question.id) %>" class="btn btn-question_edit" data-method="delete" data-confirm="質問を削除します。よろしいですか？">削除</a>
+      </div>
+    <% end %>
+      
+    <div class="clear_both"></div>
+  </div>
+    
+  <div class="question-tag_area" id="tag_area">
+    <%= render partial: 'tags/list' , locals: {question: question} %>
+    <% if question.user_id == current_user.id %>
+      <div class="question-tag_edit">
+        <%= form_for(question, url: tags_editstart_question_url, remote: true) do |f| %>
+          <%= f.hidden_field :id %>
+          <%= f.submit "タグを編集", class: "btn-tag_edit" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="clear_both"></div>
+  </div>
+    
+  <div class="question-content">
+      <%= hbr(question.content) %>
+  </div>
+  
+  <div class="question-bottom_area" id="bottom_area">
+    <%= render partial: 'questions/writable' , locals: {question: question} %>
+  </div>
+
+</div>
+
+<div class="answer-area" id="answers_area_<%= question.id %>">
+  <%= render partial: 'answers/form' , locals: {answer: answer} %>
+  <%= render partial: 'answers/list' , locals: {answers: answers} %>
+</div>

@@ -1,0 +1,44 @@
+<div class="question-mainlist">
+  <div class="question-ml_frame">
+    <div class="question-ml_header">
+      <h2>質問一覧</h2>
+    </div>
+    <% if pvcounts.count==0 %>
+      <div class="question-empty">
+        <p>条件に一致する質問の投稿はありません。</p>
+      </div>
+    <% end %>
+    <ul>
+      <% pvcounts.each do |f| %>
+        <li>
+          <div class="question-ml_topic">
+            <div class="question-ml_info">
+              <div class="question-ml_title">
+                <% if f.question.writable == true %>
+                  <span class="mark-red">受付中</span>
+                <% else %>
+                  <span class="mark-green">締切済</span>
+                <% end %>
+                <h3><a href=<%= question_url(f.question.id) %>><%= f.question.title %></a></h3>
+              </div>
+              <p>質問者：<%= f.question.user.name %> - <%= f.question.created_at.strftime("%Y.%m.%d %H:%M") %></p>
+              <div class="question-ml_tag">
+                <%= render partial: 'tags/list' , locals: {question: f.question} %>
+                <div class="clear_both"></div>
+              </div>
+            </div>
+            <div class="question-ml_counter">
+              <div class="question-ml_cntbox">
+                <p>回答</p>
+                <p class="count-strong"><%= f.question.answers.count %></p>
+              </div>
+            </div>
+            <div class="clear_both"></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%= paginate pvcounts, window: 2 %>
+    <div class="question-ml_bottom_space"></div>
+  </div>
+</div>

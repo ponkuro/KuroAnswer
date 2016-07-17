@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <p><%= @user.name %> 様</p>
-    <p>通知内容を書く...</p>
+    <p><%= @question.user.name %> 様</p>
+    <p>あなたの投稿した質問に回答がありました。</p>
+    <p><%= link_to question_url(@question) %></p>
   </body>
 </html>

@@ -1,0 +1,18 @@
+<%= render partial: 'tags/list_edit' , locals: {question: question} %>
+<% if question.user_id == current_user.id %>
+  <div class="question-tag_edit">
+    <%= form_for(question, url: tags_editend_question_url(question.id), remote: true) do |f| %>
+      <%= f.hidden_field :id %>
+      <%= f.submit "編集を終了", class: "btn-tag_edit2" %>
+    <% end %>
+  </div>
+  
+  <form class="question-new_tag_form" action="<%= tagnotes_url %>" accept-charset="UTF-8" data-remote="true" method="post">
+    <input type="hidden" name="utf8" value="&#x2713;" />
+    <input type="hidden" name="tagnote[question_id]"  value="<%= question.id %>" />
+    <input type="text" name="tagnote[tag_name]" placeholder="タグ名" class="tag-input_field" />
+    <input type="submit" name="commit" value="追加する" class="btn" />
+  </form> 
+  
+<% end %>
+<div class="clear_both"></div>

@@ -1,0 +1,19 @@
+<ul>
+  <% notes = question.tagnotes.order(created_at: :asc) %>
+  <% notes.each do |tagnote| %>
+    <% unless tagnote.id.nil? %>
+      <li>
+        <%= form_for(question.tagnotes.find_by(tag_id: tagnote.tag_id), html: {method: :delete}, remote: true) do |f| %>
+          <%= f.hidden_field :question_id, :value => question.id %>
+          <%= f.submit tagnote.tag.name, class: "btn-tag_delete" %>
+        <% end %>
+        <i class="fa fa-times-circle i_tag_del" aria-hidden="true"></i>
+      </li>
+    <% end %>
+  <% end %>
+  <% if question.tags.count==0 %>
+    <li>
+      <p>タグ情報はありません。</p>
+    </li>
+  <% end %>
+</ul>

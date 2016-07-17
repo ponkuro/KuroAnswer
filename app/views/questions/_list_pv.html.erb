@@ -1,0 +1,29 @@
+<div class="question-sidelist">
+  <div class="question-sl_frame">
+    <div class="question-sl_header">
+      <h3>PVランキング(24時間)</h3>
+    </div>
+    <% Pvcount.update_timescope %>
+    <% timescope = Time.now.strftime("%Y%m%d%H").to_i %>
+    <% pvcounts = Pvcount.where(timescope: timescope).order(pv_24hr: :desc).limit(5) %>
+    <div class="question-sl_content">
+      <% if pvcounts.count==0 %>
+        <div class="question-empty">
+          <p>直近24時間にアクセスはありませんでした。</p>
+        </div>
+      <% end %>
+      <ul>
+        <% pvcounts.each do |f| %>
+          <li>
+            <div class="question-sl_itembox">
+              <a href="<%= question_url(f.question.id) %>" ><%= f.question.title %></a>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="question-sl_bottom">
+      <a href="<%= pvcounts_url %>">もっと見る</a>
+    </div>
+  </div>
+</div>

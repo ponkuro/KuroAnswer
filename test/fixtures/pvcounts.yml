@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timescope: 1
+  pv: 1
+  24hr_pv: 1
+  prev23_pv: 1
+  question_id: 
+
+two:
+  timescope: 1
+  pv: 1
+  24hr_pv: 1
+  prev23_pv: 1
+  question_id: 
