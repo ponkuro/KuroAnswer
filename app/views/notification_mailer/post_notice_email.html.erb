@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
   </head>
   <body>
-    <p><%= @question.user.name %> 様</p>
-    <p>あなたの投稿した質問に回答がありました。</p>
-    <p><%= link_to question_url(@question) %></p>
+    <p><%= @user.name %> 様</p>
+    <p>あなたの投稿した質問への回答がありました。<br />
+    <a href="<%= question_url(@question) %>"><%= question_url(@question) %></a></p>
   </body>
 </html>

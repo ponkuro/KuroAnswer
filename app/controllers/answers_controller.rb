@@ -11,7 +11,9 @@ class AnswersController < ApplicationController
         
         # deliverメソッドを使って、メールを送信する
         unless current_user.email.include?("@example.com")
-      	  NotificationMailer.post_notice_email(@question).deliver
+          unless current_user == @question.user
+      	    NotificationMailer.post_notice_email(@question).deliver
+      	  end
       	end
       	
         format.html { redirect_to question_url(@question.id) }
