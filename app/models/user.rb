@@ -32,13 +32,9 @@ class User < ActiveRecord::Base
         name: auth.extra.raw_info.name,
         provider: auth.provider,
         uid: auth.uid,
-        email: auth.info.email,
+        email: User.create_unique_email,
         password: Devise.friendly_token[0,20]
       )
-      # メールアドレスを取得できない時は自動生成する
-      unless user.email?
-        user.email = User.create_unique_email
-      end
       
       user.remote_image_url = "https://graph.facebook.com/#{user.uid}/picture?width=120&height=120"
       user.skip_confirmation!
