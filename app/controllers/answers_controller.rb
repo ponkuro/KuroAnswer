@@ -8,6 +8,12 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         @question = Question.find(@answer.question_id)
+        
+        # deliverメソッドを使って、メールを送信する
+        unless current_user.email.include?("@example.com")
+      	  NotificationMailer.post_notice_email(@question).deliver
+      	end
+      	
         format.html { redirect_to question_url(@question.id) }
         format.js {render :redraw }
       else
