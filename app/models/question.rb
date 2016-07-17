@@ -37,6 +37,9 @@ class Question < ActiveRecord::Base
     
   # カウントする
   def countup!(target_time)
+    # 更新する
+    Pvcount.update_timescope
+    
     i_timescope = target_time.strftime("%Y%m%d%H").to_i
     pvcount = Pvcount.set_counter(self.id, i_timescope)
     
